@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Order a Birthday Surprise | MEMOIR MADE</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Lora:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#fff7ee;--ink:#3b2a3f;--acc:#ff5d8f;--card:#fff;--soft:#ffe3ec;--line:#e9cfd8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1c1624;--ink:#fbeaf1;--card:#2b2236;--soft:#3a2d48;--line:#4a3a5c}}
+:root[data-theme="dark"]{--bg:#1c1624;--ink:#fbeaf1;--card:#2b2236;--soft:#3a2d48;--line:#4a3a5c}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Lora,Georgia,serif}
+.wrap{max-width:520px;margin:0 auto;padding:22px 16px 40px}
+h1{font:700 clamp(36px,10vw,50px)/1.05 Caveat,cursive;margin:6px 0 4px;text-align:center}
+.sub{text-align:center;opacity:.8;margin:0 0 18px}
+.card{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:16px;margin-bottom:14px;box-shadow:0 3px 0 #0001}
+h2{font:700 26px Caveat,cursive;margin:0 0 8px}
+label.f{display:block;font-size:14px;margin:10px 0 4px;opacity:.85}
+input[type=text],textarea{width:100%;font:16px Lora,serif;padding:10px;border-radius:10px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink)}
+textarea{min-height:110px;resize:vertical}
+.packs{display:grid;gap:10px}
+.pk{display:block;cursor:pointer}
+.pk input{position:absolute;opacity:0;pointer-events:none}
+.pk span{display:block;border:2px solid var(--line);border-radius:14px;padding:12px 14px;background:var(--bg)}
+.pk b{font:700 24px Caveat,cursive}
+.pk small{display:block;opacity:.8;line-height:1.35}
+.pk input:checked+span{border-color:var(--acc);background:var(--soft);box-shadow:0 0 0 2px var(--acc) inset}
+.pk input:focus-visible+span{outline:3px solid var(--acc)}
+.cols{display:flex;gap:10px}
+.sw{flex:1;cursor:pointer;text-align:center}
+.sw input{position:absolute;opacity:0;pointer-events:none}
+.sw span{display:block;border:2px solid var(--line);border-radius:12px;padding:10px 4px;font-weight:600}
+.sw input:checked+span{border-color:var(--ink);box-shadow:0 0 0 2px var(--ink) inset}
+.sw.p span{background:#ffd3e1;color:#5b2540}.sw.b span{background:#cfe2ff;color:#1d2f55}.sw.g span{background:#d4efc4;color:#24402b}
+.chk{display:flex;gap:8px;align-items:center;margin-top:8px;font-size:15px}
+.btn{display:block;width:100%;border:0;border-radius:99px;padding:12px 20px;font:700 26px Caveat,cursive;background:var(--acc);color:#fff;box-shadow:0 4px 0 #0003;cursor:pointer;text-align:center;text-decoration:none}
+.btn.alt{background:var(--soft);color:var(--ink);margin-top:10px}
+.err{color:#d6204d;font-size:14px;margin:8px 0 0;min-height:1em}
+#res{display:none}
+#res textarea{min-height:200px;font-size:14px}
+ol{margin:6px 0 0;padding-left:20px}
+.note{font-size:14px;opacity:.85;margin-top:10px}
+</style></head><body>
+<div class="wrap">
+<h1>Order your Birthday Surprise 🎂</h1>
+<p class="sub">Fill this in, tap the button, and send it to us on Instagram 💌<br><small>MEMOIR MADE · @memoirmade.co</small></p>
+
+<form id="f" onsubmit="return false">
+<div class="card">
+<h2>1. Choose your pack</h2>
+<div class="packs">
+<label class="pk"><input type="radio" name="pack" value="BASIC (₹149)" checked><span><b>🎁 Basic · ₹149</b><small>Cake and candles, funny cat surprises, a heartfelt letter, flowers</small></span></label>
+<label class="pk"><input type="radio" name="pack" value="FULL (₹249)"><span><b>💖 Full · ₹249</b><small>Everything in Basic, plus memories with your photos and a scratch card with your own coupon</small></span></label>
+</div>
+</div>
+
+<div class="card">
+<h2>2. The basics</h2>
+<label class="f" for="to">Birthday person’s name</label>
+<input type="text" id="to" autocomplete="off" placeholder="e.g. Riya">
+<label class="f" for="from">Your name (who it’s from)</label>
+<input type="text" id="from" autocomplete="off" placeholder="e.g. Aman">
+<label class="f">Favourite colour</label>
+<div class="cols">
+<label class="sw p"><input type="radio" name="col" value="pink" checked><span>Pink</span></label>
+<label class="sw b"><input type="radio" name="col" value="blue"><span>Blue</span></label>
+<label class="sw g"><input type="radio" name="col" value="green"><span>Green</span></label>
+</div>
+</div>
+
+<div class="card">
+<h2>3. Your letter 💌</h2>
+<label class="f" for="letter">Write what you want to say to them</label>
+<textarea id="letter" placeholder="Dear Riya, …"></textarea>
+<label class="chk"><input type="checkbox" id="wr"> Write it for me (I’ll tell you a few things about them in DM)</label>
+</div>
+
+<div class="card" id="full" style="display:none">
+<h2>4. Full pack extras 📸</h2>
+<label class="f" for="m1">Memory 1 (short caption)</label>
+<input type="text" id="m1" autocomplete="off" placeholder="e.g. The day we met">
+<label class="f" for="m2">Memory 2</label>
+<input type="text" id="m2" autocomplete="off" placeholder="e.g. Our silly late-night walk">
+<label class="f" for="m3">Memory 3</label>
+<input type="text" id="m3" autocomplete="off" placeholder="e.g. That trip we never stop talking about">
+<label class="f" for="cp">Scratch card coupon</label>
+<input type="text" id="cp" autocomplete="off" placeholder="e.g. One dinner, your choice, on me!">
+<p class="note">📸 You’ll send your 3 photos in the same DM chat after the message.</p>
+</div>
+
+<p class="err" id="err" role="alert"></p>
+<button class="btn" id="mk" type="button">Create my order message ✨</button>
+</form>
+
+<div class="card" id="res">
+<h2>Almost done! 🎉</h2>
+<ol>
+<li>Tap <b>Copy message</b></li>
+<li>Tap <b>Open Instagram DM</b> and paste it in the chat</li>
+<li>Send your photos (Full pack) and pay by UPI when we reply</li>
+</ol>
+<label class="f" for="out">Your order message</label>
+<textarea id="out" readonly></textarea>
+<button class="btn" id="cpy" type="button" style="margin-top:12px">Copy message 📋</button>
+<a class="btn alt" id="ig" href="https://ig.me/m/memoirmade.co" target="_blank" rel="noopener">Open Instagram DM 💌</a>
+<p class="note">⏱️ Your surprise link is delivered within 48 hours, right in your DM.</p>
+</div>
+</div>
+<script>
+const $=s=>document.querySelector(s),v=s=>$(s).value.trim(),r=n=>document.querySelector('input[name='+n+']:checked').value;
+function sync(){$('#full').style.display=r('pack').startsWith('FULL')?'block':'none'}
+document.querySelectorAll('input[name=pack]').forEach(e=>e.onchange=sync);sync();
+$('#mk').onclick=async()=>{
+  const full=r('pack').startsWith('FULL'),e=$('#err');e.textContent='';
+  if(!v('#to')||!v('#from')){e.textContent='Please add both names.';return}
+  if(!v('#letter')&&!$('#wr').checked){e.textContent='Please write your letter, or tick “Write it for me”.';return}
+  let t='Hi MEMOIR MADE! 🎂 I’d like to order a Birthday Surprise.\n\nPack: '+r('pack')+'\nBirthday person: '+v('#to')+'\nFrom: '+v('#from')+'\nColour: '+r('col')+'\n\nLetter: '+($('#wr').checked&&!v('#letter')?'Please write it for me (I’ll share details)':v('#letter'));
+  if(full){const m=['#m1','#m2','#m3'].map(s=>v(s)).filter(Boolean);t+='\n\nMemories:\n'+(m.length?m.map((x,i)=>(i+1)+'. '+x).join('\n'):'(will share in chat)')+'\n\nScratch card coupon: '+(v('#cp')||'(will share in chat)')+'\n\nI’ll send my photos in this chat next 📸'}
+  $('#out').value=t;$('#res').style.display='block';$('#res').scrollIntoView({behavior:'smooth'});
+  try{await navigator.clipboard.writeText(t);$('#cpy').textContent='Copied ✅'}catch(x){}
+};
+$('#cpy').onclick=async()=>{const o=$('#out');try{await navigator.clipboard.writeText(o.value);$('#cpy').textContent='Copied ✅'}catch(x){o.focus();o.select();$('#cpy').textContent='Now press Copy on your keyboard'}};
+</script>
+</body></html>
